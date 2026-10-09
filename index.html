@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pondo Billing System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div><strong>Pondo</strong><span>Billing System</span></div>
+      </div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav">
+        <button class="nav-item active" data-page="overview"><span>▦</span> Overview</button>
+        <button class="nav-item" data-page="computers"><span>▣</span> Computers <b class="nav-count">12</b></button>
+        <button class="nav-item" data-page="sessions"><span>◷</span> Sessions</button>
+        <button class="nav-item" data-page="members"><span>♙</span> Members</button>
+        <button class="nav-item" data-page="transactions"><span>↔</span> Transactions</button>
+        <button class="nav-item" data-page="inventory"><span>▤</span> Inventory</button>
+        <button class="nav-item" data-page="reports"><span>▥</span> Reports</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><div class="help-icon">?</div><div><strong>Need a hand?</strong><p>View the quick-start guide</p></div><span>↗</span></div>
+        <button class="nav-item" data-page="settings"><span>⚙</span> Settings</button>
+        <div class="profile">
+          <div class="avatar">AD</div><div class="profile-copy"><strong>Admin Demo</strong><span>Owner account</span></div><span class="dots">•••</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Toggle menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumbPage">Overview</strong></div>
+        <div class="top-actions">
+          <div class="branch-select">⌖ <span>Main Branch</span> <span class="chevron">⌄</span></div>
+          <button class="icon-button" title="Notifications" aria-label="Notifications">♧<i></i></button>
+          <div class="top-avatar">AD</div>
+        </div>
+      </header>
+
+      <section class="content">
+        <div class="page-heading">
+          <div><p class="eyebrow" id="todayLabel">FRIDAY, OCTOBER 9</p><h1 id="pageTitle">Good evening, Admin <span class="wave">✦</span></h1><p class="subheading" id="pageSubtitle">Here’s what’s happening at your shop today.</p></div>
+          <div class="heading-actions"><button class="button button-light" id="exportBtn">↓ <span>Export report</span></button><button class="button button-primary" id="newSessionBtn">＋ <span>New session</span></button></div>
+        </div>
+
+        <div class="notice" id="notice" role="status"></div>
+        <div class="stat-grid" id="stats">
+          <article class="stat-card"><div class="stat-top"><span class="stat-label">Today's revenue</span><span class="stat-icon purple">₱</span></div><div class="stat-value">₱8,450<span class="trend up">↗ 12.8%</span></div><div class="stat-foot">Compared to yesterday</div><div class="sparkline purple-line"><span style="height:25%"></span><span style="height:38%"></span><span style="height:32%"></span><span style="height:55%"></span><span style="height:45%"></span><span style="height:70%"></span><span style="height:58%"></span><span style="height:90%"></span><span style="height:76%"></span><span style="height:100%"></span></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-label">Active sessions</span><span class="stat-icon blue">◷</span></div><div class="stat-value">08<span class="stat-suffix">/ 12 PCs</span></div><div class="progress"><span style="width:66.7%"></span></div><div class="stat-foot">66.7% occupancy</div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-label">Registered members</span><span class="stat-icon green">♙</span></div><div class="stat-value">248<span class="trend up">↗ 8 new</span></div><div class="stat-foot">Members this month</div><div class="mini-avatars"><span>JM</span><span>AL</span><span>RC</span><span>+5</span></div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-label">Pending top-ups</span><span class="stat-icon orange">↗</span></div><div class="stat-value">03<span class="stat-suffix">requests</span></div><div class="stat-foot"><span class="orange-text">Needs review</span> · ₱1,500 total</div><button class="text-link" data-page-link="transactions">Review transactions →</button></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <section class="panel computer-panel">
+            <div class="panel-heading"><div><h2>Computer status</h2><p>Live overview of your gaming units</p></div><button class="subtle-button" data-page-link="computers">View all <span>→</span></button></div>
+            <div class="status-legend"><span><i class="dot online"></i> In use <b>8</b></span><span><i class="dot available"></i> Available <b>3</b></span><span><i class="dot maintenance"></i> Maintenance <b>1</b></span></div>
+            <div class="pc-grid" id="pcGrid"></div>
+          </section>
+
+          <section class="panel sessions-panel">
+            <div class="panel-heading"><div><h2>Active sessions</h2><p>Current customer sessions</p></div><button class="more-button" aria-label="More options">•••</button></div>
+            <div class="session-list" id="sessionList"></div>
+            <button class="full-width-link" data-page-link="sessions">View all sessions <span>→</span></button>
+          </section>
+        </div>
+
+        <section class="panel transactions-panel">
+          <div class="panel-heading transaction-heading"><div><h2>Recent transactions</h2><p>Latest payments and wallet activity</p></div><div class="transaction-tools"><label class="search-box">⌕ <input id="transactionSearch" placeholder="Search transactions..." aria-label="Search transactions"></label><button class="subtle-button" data-page-link="transactions">View all <span>→</span></button></div></div>
+          <div class="table-wrap"><table><thead><tr><th>TRANSACTION</th><th>MEMBER</th><th>TYPE</th><th>DATE & TIME</th><th>AMOUNT</th><th>STATUS</th></tr></thead><tbody id="transactionRows"></tbody></table></div>
+          <div class="table-footer"><span id="transactionCount">Showing 5 recent transactions</span><div class="pagination"><button disabled>‹</button><button class="page-current">1</button><button>2</button><button>3</button><button>›</button></div></div>
+        </section>
+        <footer>© 2026 Pondo Billing System <span>Frontend prototype · Demo data only</span></footer>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="sessionDialog" class="modal">
+    <form method="dialog" id="sessionForm">
+      <div class="modal-head"><div><p class="eyebrow">SESSION MANAGEMENT</p><h2>Start a new session</h2></div><button class="close-button" value="cancel" aria-label="Close">×</button></div>
+      <label class="field-label">Member name<input name="member" required placeholder="e.g. Juan Dela Cruz"></label>
+      <label class="field-label">Computer<select name="computer" id="computerSelect" required></select></label>
+      <label class="field-label">Package<select name="package"><option value="1">1 hour · ₱20</option><option value="2">2 hours · ₱35</option><option value="3">3 hours · ₱50</option></select></label>
+      <div class="modal-actions"><button class="button button-light" value="cancel">Cancel</button><button class="button button-primary" id="startSessionSubmit" value="default">Start session</button></div>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
